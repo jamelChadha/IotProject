@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "author": "Shiv",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 52.7, "left": -158.6, "attrs": {} },
+    { "type": "wokwi-dht22", "id": "dht1", "top": -62.24, "left": 4.2, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": 131.2,
+      "left": -551.2,
+      "attrs": { "pins": "i2c" }
+    },
+    { "type": "wokwi-vcc", "id": "vcc1", "top": 183.16, "left": -710.4, "attrs": {} },
+    { "type": "wokwi-gnd", "id": "gnd1", "top": 115.2, "left": -711, "attrs": {} },
+    { "type": "wokwi-LDR", "id": "ldr1", "top": 50, "left": -50, "attrs": {} },
+    { "type": "wokwi-photocell", "id": "electric1", "top": 100, "left": -50, "attrs": {} } 
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "esp:3V3", "dht1:VCC", "red", [ "v-0.3", "h96.2" ] ],
+    [ "esp:GND.1", "dht1:GND", "black", [ "h0" ] ],
+    [ "esp:D15", "dht1:SDA", "green", [ "h0" ] ],
+    [ "vcc1:VCC", "lcd1:VCC", "red", [ "h57.6", "v-0.1" ] ],
+    [ "gnd1:GND", "lcd1:GND", "black", [ "h57.6", "v57.6" ] ],
+    [ "lcd1:SDA", "esp:D21", "green", [ "h0" ] ],
+    [ "lcd1:SCL", "esp:D22", "green", [ "h0" ] ],
+    [ "esp:A0", "ldr1:PIN", "yellow", [] ], 
+    [ "esp:A1", "electric1:PIN", "blue", [] ]
+  ],
+  "dependencies": {}
+}
